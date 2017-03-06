@@ -31,8 +31,7 @@ TaskList.fragments = {
 TaskList.propTypes = {
   tasks: PropTypes.arrayOf(propType(Task.fragments.task)).isRequired,
   onSnoozeTask: PropTypes.func,
-  onPinTask: PropTypes.func,
-  onUpdateTaskTitle: PropTypes.func.isRequired
+  onPinTask: PropTypes.func
 };
 
 export default TaskList;
