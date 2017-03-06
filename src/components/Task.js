@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { propType } from 'graphql-anywhere';
+import gql from 'graphql-tag';
 
 const alignStyles = {
   fontSize: '14px',
   lineHeight: '1.5rem',
-  padding: '0.75em 0.25em',
+  padding: '0.75em 0.25em'
 };
 
 export default function Task(
   {
     task: { id, title, url, state, subtitle },
     onSnoozeTask,
-    onPinTask,
-  },
+    onPinTask
+  }
 ) {
   return (
     <div className="list-item">
@@ -45,3 +47,21 @@ export default function Task(
     </div>
   );
 }
+
+Task.fragments = {
+  task: gql`
+    fragment TaskFragment on Task {
+      id
+      title
+      subtitle
+      url
+      state
+    }
+  `
+};
+
+Task.propTypes = {
+  task: propType(Task.fragments.task).isRequired,
+  onSnoozeTask: PropTypes.func,
+  onPinTask: PropTypes.func
+};
