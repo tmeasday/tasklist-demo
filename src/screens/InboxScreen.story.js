@@ -44,9 +44,11 @@ const client = new ApolloClient({
 
 export function MockedProvider({ children }) {
   return (
-    <ApolloProvider client={client}>
-      {children}
-    </ApolloProvider>
+    <div id="content-container">
+      <ApolloProvider client={client}>
+        {children}
+      </ApolloProvider>
+    </div>
   );
 }
 
